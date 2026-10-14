@@ -6,7 +6,31 @@ const products = [
   {id:5,name:'Skittles Original',type:'Candy',category:'sweet',image:'skittles.png',price:1.25,stock:10,color:'#f8e7e5'},
   {id:6,name:'Sour Patch Kids',type:'Candy',category:'sweet',image:'sour_patch_kids.png',price:1.25,stock:8,color:'#edf3dc'},
   {id:7,name:'Takis Fuego',type:'Chips',category:'chips',image:'takis.png',price:1.80,stock:6,color:'#eee7f6'},
-  {id:8,name:'Trolli Sour Brite Crawlers',type:'Candy',category:'sweet',image:'trolli.png',price:1.25,stock:9,color:'#e7eef3'}
+  {id:8,name:'Trolli Sour Brite Crawlers',type:'Candy',category:'sweet',image:'trolli.png',price:1.25,stock:9,color:'#e7eef3'},
+  {id:9,name:'Sea Salt Crunch',type:'Chips',category:'chips',icon:'bakery_dining',price:1.60,stock:12,color:'#ffe1a8'},
+  {id:10,name:'Nacho Cheese Chips',type:'Chips',category:'chips',icon:'bakery_dining',price:1.60,stock:7,color:'#ffb88c'},
+  {id:11,name:'Hot Chili Twists',type:'Chips',category:'chips',icon:'local_fire_department',price:1.80,stock:4,color:'#ff9584'},
+  {id:12,name:'Sour Cream Rings',type:'Chips',category:'chips',icon:'bakery_dining',price:1.60,stock:16,color:'#dcefa5'},
+  {id:13,name:'Cola Classic',type:'Cold drink',category:'drinks',icon:'local_drink',price:1.60,stock:18,color:'#efada2'},
+  {id:14,name:'Lemon Sparkler',type:'Cold drink',category:'drinks',icon:'local_drink',price:1.60,stock:11,color:'#f7e88b'},
+  {id:15,name:'Orange Fizz',type:'Cold drink',category:'drinks',icon:'local_drink',price:1.60,stock:3,color:'#ffc278'},
+  {id:16,name:'Bottled Water',type:'Cold drink',category:'drinks',icon:'water_drop',price:1.20,stock:22,color:'#bde4ed'},
+  {id:17,name:'Chocolate Bar',type:'Sweet',category:'sweet',icon:'cookie',price:1.50,stock:14,color:'#cfad90'},
+  {id:18,name:'Gummy Mix',type:'Sweet',category:'sweet',icon:'cookie',price:1.25,stock:9,color:'#f3b4c3'},
+  {id:19,name:'Cookie Duo',type:'Sweet',category:'sweet',icon:'cookie',price:1.50,stock:5,color:'#dfc08f'},
+  {id:20,name:'Fruit Chews',type:'Sweet',category:'sweet',icon:'cookie',price:1.00,stock:0,color:'#d7b6e9'},
+  {id:21,name:'Apple Slices',type:'Fresh',category:'fresh',icon:'nutrition',price:1.25,stock:8,color:'#cde2a4'},
+  {id:22,name:'Banana',type:'Fresh',category:'fresh',icon:'nutrition',price:0.75,stock:15,color:'#f5e47e'},
+  {id:23,name:'Berry Yogurt',type:'Fresh',category:'fresh',icon:'icecream',price:2.25,stock:6,color:'#c8bae8'},
+  {id:24,name:'Cheese & Crackers',type:'Fresh',category:'fresh',icon:'lunch_dining',price:2.50,stock:3,color:'#f2d37d'},
+  {id:25,name:'Pretzel Bites',type:'Savory',category:'fresh',icon:'bakery_dining',price:1.75,stock:10,color:'#ddb68d'},
+  {id:26,name:'Popcorn Cup',type:'Savory',category:'chips',icon:'local_dining',price:1.20,stock:13,color:'#f3dd9c'},
+  {id:27,name:'Mint Gum',type:'Sweet',category:'sweet',icon:'eco',price:0.75,stock:20,color:'#bce0ca'},
+  {id:28,name:'Cereal Bar',type:'Fresh',category:'fresh',icon:'grain',price:1.25,stock:9,color:'#d9c59a'},
+  {id:29,name:'Iced Tea',type:'Cold drink',category:'drinks',icon:'emoji_food_beverage',price:1.80,stock:7,color:'#dab682'},
+  {id:30,name:'Sports Drink',type:'Cold drink',category:'drinks',icon:'local_drink',price:2.00,stock:5,color:'#a9dbea'},
+  {id:31,name:'Mini Donut Pack',type:'Sweet',category:'sweet',icon:'bakery_dining',price:1.75,stock:4,color:'#efb9ad'},
+  {id:32,name:'Trail Mix',type:'Fresh',category:'fresh',icon:'grain',price:2.00,stock:0,color:'#d6b68e'}
 ];
 
 const cart = new Map();
@@ -20,7 +44,7 @@ function renderProducts(filter = 'all') {
     const visible = filter === 'all' || product.category === filter;
     const stockText = remaining === 0 ? 'This item is sold out.' : remaining === 1 ? '1 item remains in stock.' : `${remaining} items remain in stock.`;
     return `<article class="product-card" data-category="${product.category}" ${visible ? '' : 'hidden'} style="--product-bg:${product.color}">
-      <div class="product-visual"><img class="product-photo" src="images/snacks/${product.image}" alt="${product.name}" loading="lazy" decoding="async"></div>
+      <div class="product-visual">${product.image ? `<img class="product-photo" src="images/snacks/${product.image}" alt="${product.name}" loading="lazy" decoding="async">` : `<span class="material-symbols-outlined product-icon" aria-hidden="true">${product.icon}</span>`}</div>
       <div class="product-info"><span class="product-type">${product.type}</span><h3>${product.name}</h3>
         <div class="price-row"><strong class="price">${money(product.price)}</strong></div>
         <p class="stock ${remaining === 0 ? 'out' : remaining <= 4 ? 'low' : ''}">${stockText}</p>

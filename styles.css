@@ -101,4 +101,5 @@ nav a{display:inline-flex;align-items:center;gap:6px}
 .section-heading h2 .material-symbols-outlined,.cart-intro h2 .material-symbols-outlined{font-size:28px}
 .checkmark .material-symbols-outlined{font-size:38px}
 .qty-control .material-symbols-outlined{font-size:20px}
+.product-visual .product-icon{font-size:64px;color:var(--ink)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
