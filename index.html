@@ -6,6 +6,9 @@
   <meta name="theme-color" content="#173f35">
   <meta name="description" content="The Snack Shack menu, prices, availability, and collection details.">
   <title>The Snack Shack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=block" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
@@ -13,12 +16,12 @@
   <a class="skip-link" href="#menu">Skip to snacks</a>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="The Snack Shack home">
-      <span class="brand-mark" aria-hidden="true">S</span>
+      <span class="brand-mark" aria-hidden="true"><span class="material-symbols-outlined">storefront</span></span>
       <span><strong>THE SNACK</strong><em>SHACK</em></span>
     </a>
     <nav aria-label="Main navigation">
-      <a href="#menu">Menu</a>
-      <a class="cart-link" href="#cart">Your bag <span id="header-count">0</span></a>
+      <a href="#menu"><span class="material-symbols-outlined" aria-hidden="true">restaurant_menu</span> Menu</a>
+      <a class="cart-link" href="#cart"><span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span> Your bag <span id="header-count">0</span></a>
     </nav>
   </header>
 
@@ -39,7 +42,7 @@
 
     <section class="menu-section" id="menu" aria-labelledby="menu-title">
       <div class="section-heading">
-        <div><h2 id="menu-title">Menu</h2></div>
+        <div><h2 id="menu-title"><span class="material-symbols-outlined" aria-hidden="true">restaurant_menu</span> Menu</h2></div>
       </div>
       <div class="filters" role="group" aria-label="Filter snacks">
         <button class="filter active" type="button" data-filter="all" aria-pressed="true">Everything</button>
@@ -51,7 +54,7 @@
 
     <section class="cart-section" id="cart" aria-labelledby="cart-title">
       <div class="cart-intro">
-        <h2 id="cart-title">Your order</h2>
+        <h2 id="cart-title"><span class="material-symbols-outlined" aria-hidden="true">receipt_long</span> Your order</h2>
         <p>Collection ends at <strong>12:35 today</strong>. Payment is due at collection.</p>
       </div>
       <div class="cart-panel">
@@ -69,15 +72,15 @@
   </main>
 
   <footer>
-    <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">S</span><span><strong>THE SNACK</strong><em>SHACK</em></span></a>
+    <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><span class="material-symbols-outlined">storefront</span></span><span><strong>THE SNACK</strong><em>SHACK</em></span></a>
     <p>Enquiries: Student Center front desk.</p>
     <p>© 2026 The Snack Shack</p>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <dialog id="confirmation-dialog" aria-labelledby="confirmation-title">
-    <button class="dialog-close" type="button" aria-label="Close confirmation">×</button>
-    <div class="checkmark" aria-hidden="true">✓</div>
+    <button class="dialog-close" type="button" aria-label="Close confirmation"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+    <div class="checkmark" aria-hidden="true"><span class="material-symbols-outlined">check_circle</span></div>
     <h2 id="confirmation-title">Order summary</h2>
     <p>Collection number</p>
     <strong class="order-number" id="order-number">SS-000</strong>

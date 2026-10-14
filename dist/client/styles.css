@@ -89,4 +89,16 @@ dialog h2{font-size:32px}
 .stock{font-size:13px}
 .product-type{font-size:11px}
 .product-card button{font-size:15px}
+.material-symbols-outlined{
+  font-family:'Material Symbols Outlined';font-weight:400;font-style:normal;font-size:24px;line-height:1;
+  display:inline-block;letter-spacing:normal;text-transform:none;white-space:nowrap;word-wrap:normal;
+  direction:ltr;font-feature-settings:'liga';-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;
+  vertical-align:middle;
+}
+nav a{display:inline-flex;align-items:center;gap:6px}
+.cart-link .material-symbols-outlined{display:inline-block;background:none;color:inherit;width:24px;height:24px;margin:0;border-radius:0}
+.section-heading h2,.cart-intro h2{display:flex;align-items:center;gap:10px}
+.section-heading h2 .material-symbols-outlined,.cart-intro h2 .material-symbols-outlined{font-size:28px}
+.checkmark .material-symbols-outlined{font-size:38px}
+.qty-control .material-symbols-outlined{font-size:20px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
