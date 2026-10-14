@@ -102,4 +102,12 @@ nav a{display:inline-flex;align-items:center;gap:6px}
 .checkmark .material-symbols-outlined{font-size:38px}
 .qty-control .material-symbols-outlined{font-size:20px}
 .product-visual .product-icon{font-size:64px;color:var(--ink)}
+.product-card{border-radius:16px}
+.product-visual{border-radius:10px}
+.product-card button,.button,.checkout-button{border-radius:10px}
+.cart-panel,.how-card{border-radius:16px}
+.access-note,.toast{border-radius:10px}
+.qty-control{border-radius:8px;overflow:hidden}
+.stock-bar,.stock-bar span{border-radius:999px}
+dialog{border-radius:18px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
