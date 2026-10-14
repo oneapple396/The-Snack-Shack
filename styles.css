@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root{--ink:#103f3a;--cream:#fff4df;--paper:#fffdf7;--lime:#dfff42;--orange:#ff4f45;--yellow:#ffc928;--muted:#536d67;--line:#d3d9cb;--shadow:0 16px 42px rgba(16,63,58,.17)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:'DM Sans',Arial,sans-serif;font-size:16px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',sans-serif;font-size:17px;line-height:1.5}
 button,a{font:inherit}
 button{color:inherit}
 a{color:inherit}
@@ -51,4 +51,32 @@ footer{padding:24px clamp(20px,3vw,48px)}
 }
 @media(max-width:1000px){.hero,.cart-section{grid-template-columns:1fr;gap:24px}}
 @media(max-width:720px){.hero{padding-top:24px}.hero h1{font-size:36px}.cart-section{padding-inline:20px}.quick-facts{gap:14px}}
+/* Heading and numeric styles share the same distinctive type family. */
+h1,h2,h3,.brand strong,.brand em,.brand-mark,.price,.cart-totals .total strong,.order-number,.checkmark{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+}
+.hero h1,.section-heading h2,.cart-intro h2,dialog h2{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  text-transform:none;
+  letter-spacing:-.035em;
+  line-height:1.15;
+}
+.hero h1{font-size:clamp(34px,3.5vw,48px)}
+.section-heading h2{font-size:34px}
+.cart-intro h2{font-size:30px}
+dialog h2{font-size:32px}
+.brand strong{font-size:17px;line-height:1.1;letter-spacing:-.4px}
+.brand em{font-size:14px;line-height:1.1;letter-spacing:2px}
+.brand-mark{font-size:23px}
+.product-info h3{font-size:16px;line-height:1.3;letter-spacing:-.02em}
+.price{font-size:23px;line-height:1.2}
+.cart-totals .total strong{font-size:30px}
+.order-number{font-size:44px}
+.quick-facts dd{font-size:16px}
+.stock{font-size:13px}
+.product-type{font-size:11px}
+.product-card button{font-size:15px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
