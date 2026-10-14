@@ -51,6 +51,15 @@ footer{padding:24px clamp(20px,3vw,48px)}
 }
 @media(max-width:1000px){.hero,.cart-section{grid-template-columns:1fr;gap:24px}}
 @media(max-width:720px){.hero{padding-top:24px}.hero h1{font-size:36px}.cart-section{padding-inline:20px}.quick-facts{gap:14px}}
+.hero-photo{display:block;width:100%;max-width:380px;height:auto;justify-self:center;border:0;border-radius:0;box-shadow:none;background:none}
+@media(min-width:1001px){
+  .hero{grid-template-columns:minmax(0,1.4fr) minmax(240px,.6fr);column-gap:32px;align-items:center}
+  .hero-copy{grid-column:1;grid-row:1;display:block}
+  .hero h1{margin-bottom:20px}
+  .hero>.access-note{grid-column:1;grid-row:2;align-self:start}
+  .hero-photo{grid-column:2;grid-row:1 / span 2;max-width:340px}
+}
+@media(max-width:1000px){.hero-photo{max-width:300px}}
 /* Heading and numeric styles share the same distinctive type family. */
 h1,h2,h3,.brand strong,.brand em,.brand-mark,.price,.cart-totals .total strong,.order-number,.checkmark{
   font-family:'Space Grotesk',sans-serif;
