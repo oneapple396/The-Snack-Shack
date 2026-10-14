@@ -33,13 +33,12 @@ function renderProducts(filter = 'all') {
   grid.innerHTML = products.map(product => {
     const quantity = cart.get(product.id) || 0;
     const remaining = product.stock - quantity;
-    const isSale = Boolean(product.original);
-    const visible = filter === 'all' || product.category === filter || (filter === 'sale' && isSale);
-    const stockText = remaining === 0 ? 'Sold out' : remaining <= 4 ? `Only ${remaining} left!` : `${remaining} in stock`;
+    const visible = filter === 'all' || product.category === filter;
+    const stockText = remaining === 0 ? 'This item is sold out.' : remaining === 1 ? '1 item remains in stock.' : `${remaining} items remain in stock.`;
     return `<article class="product-card" data-category="${product.category}" ${visible ? '' : 'hidden'} style="--product-bg:${product.color}">
-      <div class="product-visual">${isSale ? '<span class="sale-badge">20% OFF</span>' : ''}<span class="product-emoji" aria-hidden="true">${product.emoji}</span></div>
+      <div class="product-visual"><span class="product-emoji" aria-hidden="true">${product.emoji}</span></div>
       <div class="product-info"><span class="product-type">${product.type}</span><h3>${product.name}</h3>
-        <div class="price-row"><strong class="price">${money(product.price)}</strong>${isSale ? `<span class="old-price">${money(product.original)}</span>` : ''}</div>
+        <div class="price-row"><strong class="price">${money(product.price)}</strong></div>
         <p class="stock ${remaining === 0 ? 'out' : remaining <= 4 ? 'low' : ''}">${stockText}</p>
         <div class="stock-bar"><span style="--stock:${Math.round(remaining / product.stock * 100) || 0}%"></span></div>
         <button type="button" data-add="${product.id}" ${remaining === 0 ? 'disabled' : ''}>${remaining === 0 ? 'Unavailable' : quantity ? 'Add another' : 'Add to bag'}</button>
@@ -50,11 +49,10 @@ function renderProducts(filter = 'all') {
 function renderCart() {
   const cartItems = document.querySelector('#cart-items');
   const entries = [...cart.entries()];
-  let count = 0, total = 0, savings = 0;
+  let count = 0, total = 0;
   cartItems.innerHTML = entries.map(([id, quantity]) => {
     const product = products.find(item => item.id === id);
     count += quantity; total += product.price * quantity;
-    if (product.original) savings += (product.original - product.price) * quantity;
     return `<div class="cart-item"><div><strong>${product.name}</strong><p>${money(product.price)} each</p></div>
       <div class="qty-control"><button type="button" data-change="${id}" data-delta="-1" aria-label="Remove one ${product.name}">−</button><span>${quantity}</span><button type="button" data-change="${id}" data-delta="1" aria-label="Add one ${product.name}" ${quantity >= product.stock ? 'disabled' : ''}>+</button></div>
       <button class="remove" type="button" data-remove="${id}">Remove</button></div>`;
@@ -64,9 +62,6 @@ function renderCart() {
   document.querySelector('#item-count').textContent = count;
   document.querySelector('#total-price').textContent = money(total);
   document.querySelector('#checkout').disabled = count === 0;
-  const savingsRow = document.querySelector('.savings-row');
-  savingsRow.hidden = savings === 0;
-  document.querySelector('#savings').textContent = `−${money(savings)}`;
   document.querySelector('#dialog-total').textContent = money(total);
 }
 
@@ -77,7 +72,7 @@ function showToast(message) { const toast = document.querySelector('#toast'); to
 grid.addEventListener('click', event => {
   const button = event.target.closest('[data-add]'); if (!button) return;
   const id = Number(button.dataset.add), product = products.find(item => item.id === id), quantity = cart.get(id) || 0;
-  if (quantity < product.stock) { cart.set(id, quantity + 1); updateAll(); showToast(`${product.name} added to your bag`); }
+  if (quantity < product.stock) { cart.set(id, quantity + 1); updateAll(); showToast(`${product.name} has been added to your order.`); }
 });
 
 document.querySelector('#cart-items').addEventListener('click', event => {
@@ -90,10 +85,6 @@ document.querySelectorAll('.filter').forEach(button => button.addEventListener('
   document.querySelectorAll('.filter').forEach(item => { item.classList.remove('active'); item.setAttribute('aria-pressed','false'); });
   button.classList.add('active'); button.setAttribute('aria-pressed','true'); renderProducts(button.dataset.filter);
 }));
-
-document.querySelector('[data-filter-link]').addEventListener('click', () => {
-  const saleButton = document.querySelector('[data-filter="sale"]'); document.querySelectorAll('.filter').forEach(item => { item.classList.remove('active'); item.setAttribute('aria-pressed','false'); }); saleButton.classList.add('active'); saleButton.setAttribute('aria-pressed','true'); renderProducts('sale');
-});
 
 const dialog = document.querySelector('#confirmation-dialog');
 document.querySelector('#checkout').addEventListener('click', () => {

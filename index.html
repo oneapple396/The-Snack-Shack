@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173f35">
-  <meta name="description" content="The Snack Shack — quick, affordable lunchtime snacks at school.">
+  <meta name="description" content="The Snack Shack menu, prices, stock quantities, and collection instructions.">
   <title>The Snack Shack</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
@@ -24,25 +24,9 @@
   </header>
 
   <main id="top">
-    <section class="announcement" aria-labelledby="sale-title">
-      <div class="sale-sticker" aria-hidden="true"><span>20%</span> OFF</div>
-      <div>
-        <p class="eyebrow">THIS WEEK ONLY · AUG 19–23</p>
-        <h2 id="sale-title">Summer’s not over yet.</h2>
-        <p>Save 20% on every bag of chips and cold drink. Discount is already in the price.</p>
-      </div>
-      <a href="#menu" data-filter-link="sale">Shop the sale <span aria-hidden="true">→</span></a>
-    </section>
-
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">STUDENT-RUN · LUNCHTIME FUEL</p>
-        <h1 id="hero-title">Good snacks.<br><span>Zero waiting around.</span></h1>
-        <p class="lede">Pick what you want before lunch, get your order number, then pay and collect at the Snack Shack. Simple.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#menu">See today’s menu</a>
-          <a class="text-link" href="#how">Where do I collect?</a>
-        </div>
+        <h1 id="hero-title">The Snack Shack</h1>
         <dl class="quick-facts">
           <div><dt>Where</dt><dd>Student Center, Room 104</dd></div>
           <div><dt>When</dt><dd>Lunch · 11:45–12:35</dd></div>
@@ -51,11 +35,11 @@
       </div>
 
       <aside class="how-card" id="how" aria-labelledby="how-title">
-        <div class="how-heading"><p>FIRST TIME?</p><h2 id="how-title">Snack in 3 steps</h2></div>
+        <div class="how-heading"><p>If this is your first order, follow these instructions.</p><h2 id="how-title">How to place and collect an order</h2></div>
         <ol>
-          <li><span>01</span><div><strong>Build your bag</strong><p>Add snacks that show “in stock.”</p></div></li>
-          <li><span>02</span><div><strong>Confirm your order</strong><p>Tap “Reserve my snacks” for an order number.</p></div></li>
-          <li><span>03</span><div><strong>Pay & pick up</strong><p>Show the number at Room 104 and pay there.</p></div></li>
+          <li><span>01</span><div><strong>Choose the snacks you want.</strong><p>Add any available snacks to your order.</p></div></li>
+          <li><span>02</span><div><strong>Reserve your order.</strong><p>Select “Reserve my snacks” to receive an order number.</p></div></li>
+          <li><span>03</span><div><strong>Pay when you collect your order.</strong><p>Show your order number in Room 104 and complete your payment there.</p></div></li>
         </ol>
         <p class="access-note"><span aria-hidden="true">♿</span> Step-free entrance beside the library. Ask the front desk if you need help.</p>
       </aside>
@@ -63,8 +47,8 @@
 
     <section class="menu-section" id="menu" aria-labelledby="menu-title">
       <div class="section-heading">
-        <div><p class="eyebrow">LIVE LUNCH MENU</p><h2 id="menu-title">What’s in the Shack?</h2></div>
-        <p><span class="live-dot"></span> Stock updates as you add items</p>
+        <div><h2 id="menu-title">Menu</h2></div>
+        <p><span class="live-dot"></span> The stock count updates when you add an item.</p>
       </div>
       <div class="filters" role="group" aria-label="Filter snacks">
         <button class="filter active" type="button" data-filter="all" aria-pressed="true">Everything</button>
@@ -72,50 +56,47 @@
         <button class="filter" type="button" data-filter="drinks" aria-pressed="false">Cold drinks</button>
         <button class="filter" type="button" data-filter="sweet" aria-pressed="false">Sweet</button>
         <button class="filter" type="button" data-filter="fresh" aria-pressed="false">Fresh</button>
-        <button class="filter" type="button" data-filter="sale" aria-pressed="false">20% off</button>
       </div>
       <div class="product-grid" id="product-grid" aria-live="polite"></div>
     </section>
 
     <section class="cart-section" id="cart" aria-labelledby="cart-title">
       <div class="cart-intro">
-        <p class="eyebrow">YOUR ORDER</p>
-        <h2 id="cart-title">Ready for lunch?</h2>
-        <p>We’ll hold confirmed items until <strong>12:35 today</strong>. You won’t be charged online—pay when you collect.</p>
+        <p class="eyebrow">Your selected items are shown below.</p>
+        <h2 id="cart-title">Review your order before reserving it.</h2>
+        <p>We will hold confirmed items until <strong>12:35 today</strong>. You will not be charged online because payment is collected when you pick up your order.</p>
       </div>
       <div class="cart-panel">
         <div id="cart-items" class="cart-items"></div>
         <div id="empty-cart" class="empty-cart">
           <span aria-hidden="true">↙</span>
-          <p><strong>Your bag is empty.</strong><br>Add something tasty from the menu.</p>
+          <p>Your order does not contain any items yet.</p>
         </div>
         <div class="cart-totals">
           <div><span>Items</span><span id="item-count">0</span></div>
-          <div class="savings-row" hidden><span>Sale savings</span><span id="savings">−$0.00</span></div>
           <div class="total"><span>Total</span><strong id="total-price">$0.00</strong></div>
         </div>
         <button class="checkout-button" id="checkout" type="button" disabled>Reserve my snacks <span aria-hidden="true">→</span></button>
-        <p class="fine-print">No account needed · Pay at pickup · Orders are saved on this device</p>
       </div>
     </section>
   </main>
 
   <footer>
     <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">S</span><span><strong>THE SNACK</strong><em>SHACK</em></span></a>
-    <p>Questions? Visit the Student Center front desk.</p>
-    <p>Made by students, for students. © 2026</p>
+    <p>If you have questions, visit the Student Center front desk.</p>
+    <p>© 2026 The Snack Shack</p>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <dialog id="confirmation-dialog" aria-labelledby="confirmation-title">
     <button class="dialog-close" type="button" aria-label="Close confirmation">×</button>
     <div class="checkmark" aria-hidden="true">✓</div>
-    <p class="eyebrow">ORDER RESERVED</p>
-    <h2 id="confirmation-title">See you at lunch!</h2>
-    <p>Your pickup number is</p>
+    <p class="eyebrow">Your order has been reserved.</p>
+    <h2 id="confirmation-title">Your order is ready to collect during lunch.</h2>
+    <p>Your collection number is shown below.</p>
     <strong class="order-number" id="order-number">SS-000</strong>
     <p class="dialog-detail">Show this number at <strong>Student Center, Room 104</strong> before 12:35 today. Pay <strong id="dialog-total">$0.00</strong> with cash or student card.</p>
-    <button class="button primary dialog-done" type="button">Got it</button>
+    <button class="button primary dialog-done" type="button">Close this confirmation</button>
   </dialog>
 </body>
 </html>
