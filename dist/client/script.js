@@ -1,28 +1,12 @@
 const products = [
-  {id:1,name:'Sea Salt Crunch',type:'Chips',category:'chips',emoji:'🥔',price:1.60,original:2.00,stock:12,color:'#ffe1a8'},
-  {id:2,name:'Nacho Cheese Chips',type:'Chips',category:'chips',emoji:'🔺',price:1.60,original:2.00,stock:7,color:'#ffb88c'},
-  {id:3,name:'Hot Chili Twists',type:'Chips',category:'chips',emoji:'🌶️',price:1.80,original:2.25,stock:4,color:'#ff9584'},
-  {id:4,name:'Sour Cream Rings',type:'Chips',category:'chips',emoji:'🧅',price:1.60,original:2.00,stock:16,color:'#dcefa5'},
-  {id:5,name:'Cola Classic',type:'Cold drink',category:'drinks',emoji:'🥤',price:1.60,original:2.00,stock:18,color:'#efada2'},
-  {id:6,name:'Lemon Sparkler',type:'Cold drink',category:'drinks',emoji:'🍋',price:1.60,original:2.00,stock:11,color:'#f7e88b'},
-  {id:7,name:'Orange Fizz',type:'Cold drink',category:'drinks',emoji:'🍊',price:1.60,original:2.00,stock:3,color:'#ffc278'},
-  {id:8,name:'Bottled Water',type:'Cold drink',category:'drinks',emoji:'💧',price:1.20,original:1.50,stock:22,color:'#bde4ed'},
-  {id:9,name:'Chocolate Bar',type:'Sweet',category:'sweet',emoji:'🍫',price:1.50,stock:14,color:'#cfad90'},
-  {id:10,name:'Gummy Mix',type:'Sweet',category:'sweet',emoji:'🐻',price:1.25,stock:9,color:'#f3b4c3'},
-  {id:11,name:'Cookie Duo',type:'Sweet',category:'sweet',emoji:'🍪',price:1.50,stock:5,color:'#dfc08f'},
-  {id:12,name:'Fruit Chews',type:'Sweet',category:'sweet',emoji:'🍬',price:1.00,stock:0,color:'#d7b6e9'},
-  {id:13,name:'Apple Slices',type:'Fresh',category:'fresh',emoji:'🍎',price:1.25,stock:8,color:'#cde2a4'},
-  {id:14,name:'Banana',type:'Fresh',category:'fresh',emoji:'🍌',price:0.75,stock:15,color:'#f5e47e'},
-  {id:15,name:'Berry Yogurt',type:'Fresh',category:'fresh',emoji:'🫐',price:2.25,stock:6,color:'#c8bae8'},
-  {id:16,name:'Cheese & Crackers',type:'Fresh',category:'fresh',emoji:'🧀',price:2.50,stock:3,color:'#f2d37d'},
-  {id:17,name:'Pretzel Bites',type:'Savory',category:'fresh',emoji:'🥨',price:1.75,stock:10,color:'#ddb68d'},
-  {id:18,name:'Popcorn Cup',type:'Savory',category:'chips',emoji:'🍿',price:1.20,original:1.50,stock:13,color:'#f3dd9c'},
-  {id:19,name:'Mint Gum',type:'Sweet',category:'sweet',emoji:'🌿',price:0.75,stock:20,color:'#bce0ca'},
-  {id:20,name:'Cereal Bar',type:'Fresh',category:'fresh',emoji:'🌾',price:1.25,stock:9,color:'#d9c59a'},
-  {id:21,name:'Iced Tea',type:'Cold drink',category:'drinks',emoji:'🧋',price:1.80,original:2.25,stock:7,color:'#dab682'},
-  {id:22,name:'Sports Drink',type:'Cold drink',category:'drinks',emoji:'⚡',price:2.00,original:2.50,stock:5,color:'#a9dbea'},
-  {id:23,name:'Mini Donut Pack',type:'Sweet',category:'sweet',emoji:'🍩',price:1.75,stock:4,color:'#efb9ad'},
-  {id:24,name:'Trail Mix',type:'Fresh',category:'fresh',emoji:'🥜',price:2.00,stock:0,color:'#d6b68e'}
+  {id:1,name:'Doritos Cool Ranch',type:'Chips',category:'chips',image:'doritos.png',price:1.60,stock:12,color:'#e7eef3'},
+  {id:2,name:"Cheetos Flamin’ Hot Crunchy",type:'Chips',category:'chips',image:'hot_cheeto.png',price:1.80,stock:7,color:'#fff0de'},
+  {id:3,name:'KitKat',type:'Chocolate',category:'sweet',image:'kitkat.png',price:1.50,stock:14,color:'#f8e7e5'},
+  {id:4,name:'Reese’s Peanut Butter Cups',type:'Chocolate',category:'sweet',image:'reeses.png',price:1.50,stock:9,color:'#fff0de'},
+  {id:5,name:'Skittles Original',type:'Candy',category:'sweet',image:'skittles.png',price:1.25,stock:10,color:'#f8e7e5'},
+  {id:6,name:'Sour Patch Kids',type:'Candy',category:'sweet',image:'sour_patch_kids.png',price:1.25,stock:8,color:'#edf3dc'},
+  {id:7,name:'Takis Fuego',type:'Chips',category:'chips',image:'takis.png',price:1.80,stock:6,color:'#eee7f6'},
+  {id:8,name:'Trolli Sour Brite Crawlers',type:'Candy',category:'sweet',image:'trolli.png',price:1.25,stock:9,color:'#e7eef3'}
 ];
 
 const cart = new Map();
@@ -36,7 +20,7 @@ function renderProducts(filter = 'all') {
     const visible = filter === 'all' || product.category === filter;
     const stockText = remaining === 0 ? 'This item is sold out.' : remaining === 1 ? '1 item remains in stock.' : `${remaining} items remain in stock.`;
     return `<article class="product-card" data-category="${product.category}" ${visible ? '' : 'hidden'} style="--product-bg:${product.color}">
-      <div class="product-visual"><span class="product-emoji" aria-hidden="true">${product.emoji}</span></div>
+      <div class="product-visual"><img class="product-photo" src="images/snacks/${product.image}" alt="${product.name}" loading="lazy" decoding="async"></div>
       <div class="product-info"><span class="product-type">${product.type}</span><h3>${product.name}</h3>
         <div class="price-row"><strong class="price">${money(product.price)}</strong></div>
         <p class="stock ${remaining === 0 ? 'out' : remaining <= 4 ? 'low' : ''}">${stockText}</p>
